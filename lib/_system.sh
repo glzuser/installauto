@@ -618,7 +618,7 @@ build_ambos() {
   cd "$FRONT_PATH" || { echo "❌ No se pudo acceder al frontend en $FRONT_PATH"; return 1; }
 
   echo "🧹 Limpiando build anterior..."
-  sudo -u deploy rm -rf build & 
+  sudo rm -rf build & 
   show_spinner $!
 
   echo "🏗️  Construyendo nueva versión del frontend..."
@@ -630,7 +630,7 @@ build_ambos() {
   cd "$BACK_PATH" || { echo "❌ No se pudo acceder al backend en $BACK_PATH"; return 1; }
 
   echo "🧹 Limpiando build anterior..."
-  sudo -u deploy rm -rf dist & 
+  sudo rm -rf dist & 
   show_spinner $!
 
   echo "🏗️  Construyendo nueva versión del backend..."
@@ -653,7 +653,7 @@ backend_build() {
   cd "$BACK_PATH" || { echo "❌ No se pudo acceder al backend en $BACK_PATH"; return 1; }
 
   echo "🧹 Limpiando build anterior..."
-  sudo -u deploy rm -rf dist
+  sudo rm -rf dist
   sleep 2
   echo "🏗️  Construyendo nueva versión del backend..."
   sudo -u deploy npm run build 
@@ -670,10 +670,10 @@ frontend_build() {
   FRONT_PATH="/home/deploy/${instancia_add}/frontend"
 
   echo -e "\n🔧 frontend:"
-  cd "$FRONT_PATH" || { echo "❌ No se pudo acceder al backend en $BACK_PATH"; return 1; }
+  cd "$FRONT_PATH" || { echo "❌ No se pudo acceder al frontend en $FRONT_PATH"; return 1; }
 
   echo "🧹 Limpiando build anterior..."
-  sudo -u deploy rm -rf build
+  sudo rm -rf build
   sleep 2
   echo "🏗️  Construyendo nueva versión del frontend..."
   sudo -u deploy npm run build
