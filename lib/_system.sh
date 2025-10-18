@@ -618,7 +618,7 @@ build_ambos() {
   cd "$FRONT_PATH" || { echo "❌ No se pudo acceder al frontend en $FRONT_PATH"; return 1; }
 
   echo "🧹 Limpiando build anterior..."
-  sudo rm -rf build & 
+  sudo -u deploy rm -rf build & 
   show_spinner $!
 
   echo "🏗️  Construyendo nueva versión del frontend..."
@@ -630,7 +630,7 @@ build_ambos() {
   cd "$BACK_PATH" || { echo "❌ No se pudo acceder al backend en $BACK_PATH"; return 1; }
 
   echo "🧹 Limpiando build anterior..."
-  sudo rm -rf dist & 
+  sudo -u deploy rm -rf dist & 
   show_spinner $!
 
   echo "🏗️  Construyendo nueva versión del backend..."
